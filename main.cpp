@@ -3,14 +3,20 @@
 #include <stdlib.h>
 #include <algorithm>
 
-const int N = 10000;
-int data[N];
+int *data;
 
 int result_sum, result_max;
 void *compute_sum(void *param);
 void *compute_max(void *param);
 
 int main(int argc, char *argv[]) {
+	if (argc != 2) {
+		printf("Usage: %s size\n", argv[0]);
+		exit(1);
+	}
+	int N = atoi(argv[1]);
+	data = new int[N];
+
 	// initialize data
 	for (int i = 0; i < N; i++) data[i] = i + 1;
 	std::random_shuffle(data, data + N);
@@ -29,6 +35,7 @@ int main(int argc, char *argv[]) {
 	pthread_join(tid_max, NULL);
 
 	printf("sum = %d  max = %d\n", result_sum, result_max);
+	delete [] data;
 }
 
 void *compute_sum(void *param) {

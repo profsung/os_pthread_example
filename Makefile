@@ -1,5 +1,8 @@
-a.out: main.cpp
-	g++ main.cpp -lpthread
+a.out: main.o
+	g++ main.o -lpthread
+
+main.o: main.cpp
+	g++ -c main.cpp
 
 clean:
 	rm a.out

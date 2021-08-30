@@ -3,9 +3,10 @@
 #include <stdlib.h>
 #include <algorithm>
 
+// global variables are shared among threads
 int *data;
-
 int result_sum, result_max;
+
 void* compute_sum(void* param);
 void* compute_max(void* param);
 

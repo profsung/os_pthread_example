@@ -6,8 +6,8 @@
 int *data;
 
 int result_sum, result_max;
-void *compute_sum(void *param);
-void *compute_max(void *param);
+void* compute_sum(void* param);
+void* compute_max(void* param);
 
 int main(int argc, char *argv[]) {
 	if (argc != 2) {
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 	delete [] data;
 }
 
-void *compute_sum(void *param) {
+void* compute_sum(void* param) {
 	int limit = atoi((char *) param);
 	result_sum = 0;
 	for (int i = 0; i < limit; i++)
@@ -47,7 +47,7 @@ void *compute_sum(void *param) {
 	pthread_exit(0);
 }
 
-void *compute_max(void *param) {
+void* compute_max(void* param) {
 	int limit = atoi((char *) param);
 	result_max = data[0];
 	for (int i = 1; i < limit; i++)
